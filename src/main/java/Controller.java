@@ -12,9 +12,10 @@ public class Controller {
         get("/one", (req, res) -> {
             Randomiser randomiser = new Randomiser();
             String name = randomiser.pickRandomName();
-            HashMap<String, Object> model = new HashMap<>;
+            HashMap<String, Object> model = new HashMap<>();
             model.put("name", name);
-            return new ModelAndView(model, "random_name.vtl");
+            model.put("template", "one.vtl");
+            return new ModelAndView(model, "layout.vtl");
             }, velocityTemplateEngine);
     }
 
