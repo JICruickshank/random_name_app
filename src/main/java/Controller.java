@@ -28,6 +28,16 @@ public class Controller {
             model.put("template", "two.vtl");
             return new ModelAndView(model, "layout.vtl");
         }, velocityTemplateEngine);
+
+        get("/:num", (req, res) -> {
+            int groupSize = Integer.parseInt(req.params(":num"));
+            Randomiser randomiser = new Randomiser();
+            List<String> group = randomiser.pickRandomGroup(groupSize);
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("group", group);
+            model.put("template", "group.vtl");
+            return new ModelAndView(model, "layout.vtl");
+        }, velocityTemplateEngine);
     }
 
 

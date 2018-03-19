@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
@@ -36,5 +37,11 @@ public class RandomiserTest {
     public void testPicksPair() {
         assertEquals(2, randomiser.pickRandomPair().size());
         assertEquals(1, randomiser.getNames().size());
+    }
+
+    @Test
+    public void testRandomGroupWorks() {
+        int result = randomiser.pickRandomGroup(2).size();
+        assertEquals(2, result);
     }
 }
