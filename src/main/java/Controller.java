@@ -3,7 +3,9 @@ import spark.Spark;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Controller {
 
@@ -17,6 +19,15 @@ public class Controller {
             model.put("template", "one.vtl");
             return new ModelAndView(model, "layout.vtl");
             }, velocityTemplateEngine);
+
+        get("/two", (req, res) -> {
+            Randomiser randomiser = new Randomiser();
+            List<String> pair = randomiser.pickRandomPair();
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("pair", pair);
+            model.put("template", "two.vtl");
+            return new ModelAndView(model, "layout.vtl");
+        }, velocityTemplateEngine);
     }
 
 
