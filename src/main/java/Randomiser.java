@@ -26,4 +26,11 @@ public class Randomiser {
         Collections.shuffle(names);
         return names.remove(0);
     }
+
+    public List<String> pickRandomPair(){
+        List<String> pair = new ArrayList<String>();
+        pair.add(pickRandomName());
+        pair.add(pickRandomName());
+        return pair;
+    }
 }
